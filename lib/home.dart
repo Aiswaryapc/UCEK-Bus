@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ucek_bus/main.dart';
@@ -37,9 +39,21 @@ class _NavWidgetState extends State<NavWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: pages[_currentIndex],
-        ),
+        body: Stack(children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                shape: BoxShape.rectangle,
+                color: Colors.cyan,
+              ),
+            ),
+          ),
+          Center(
+            child: pages[_currentIndex],
+          ),
+        ]),
         bottomNavigationBar: NavigationBar(
           animationDuration: const Duration(seconds: 1),
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
